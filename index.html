@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALQASIR - Premium Welding Electrodes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --dark-gray: #2c3e50;
+        --steel-blue: #34495e;
+        --light-blue: #3498db;
+        --orange: #e67e22;
+        --white: #ecf0f1;
+        --light-gray: #95a5a6;
+        --black: #1a1a1a;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-gray);
+      }
+
+      /* Navigation */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--dark-gray);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--orange);
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--orange);
+      }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--orange);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--steel-blue) 0%,
+          var(--dark-gray) 100%
+        );
+        color: var(--white);
+        padding: 8rem 2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 600px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          var(--light-blue) 0%,
+          transparent 70%
+        );
+        opacity: 0.1;
+        top: -100px;
+        right: -100px;
+        border-radius: 50%;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .cta-button {
+        background-color: var(--orange);
+        color: var(--white);
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        background-color: #d35400;
+        transform: translateY(-2px);
+      }
+
+      /* Sections */
+      section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: var(--dark-gray);
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--orange);
+        border-radius: 2px;
+      }
+
+      /* About Section */
+      #about {
+        background-color: #f8f9fa;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        color: var(--light-blue);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+      }
+
+      .about-text h3:first-of-type {
+        margin-top: 0;
+      }
+
+      .about-text p {
+        color: var(--light-gray);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      /* Products Section */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .product-card {
+        background-color: var(--white);
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          border-color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--orange);
+      }
+
+      .product-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-card h3 {
+        color: var(--steel-blue);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-card .specs {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+        color: var(--light-gray);
+      }
+
+      .product-card p {
+        color: var(--light-gray);
+        line-height: 1.7;
+      }
+
+      .quality-badges {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        background-color: var(--light-blue);
+        color: var(--white);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      /* Contact Section */
+      #contact {
+        background-color: var(--dark-gray);
+        color: var(--white);
+      }
+
+      #contact .section-title {
+        color: var(--white);
+      }
+
+      #contact .section-title::after {
+        background-color: var(--orange);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .contact-info h3 {
+        color: var(--orange);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .contact-info p {
+        color: var(--white);
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 0.8rem;
+        border: 2px solid var(--steel-blue);
+        border-radius: 5px;
+        font-family: inherit;
+        background-color: var(--white);
+        color: var(--dark-gray);
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--orange);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-button {
+        background-color: var(--orange);
+        color: var(--white);
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #d35400;
+        transform: translateY(-2px);
+      }
+
+      .form-message {
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+        display: none;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .form-message.success {
+        background-color: #27ae60;
+        color: var(--white);
+        display: block;
+      }
+
+      .form-message.error {
+        background-color: #e74c3c;
+        color: var(--white);
+        display: block;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      footer p {
+        opacity: 0.8;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          right: 0;
+          background-color: var(--dark-gray);
+          flex-direction: column;
+          gap: 0;
+          padding: 1rem;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links a {
+          padding: 0.8rem 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 1rem;
+        }
+
+        .logo {
+          font-size: 1.3rem;
+        }
+
+        .hero {
+          padding: 4rem 1rem;
+          min-height: 400px;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 0.95rem;
+        }
+
+        section {
+          padding: 2rem 1rem;
+        }
+
+        .cta-button {
+          padding: 0.8rem 1.8rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">ALQASIR</div>
+      <ul class="nav-links">
+        <li><a href="#home" onclick="smoothScroll(event)">Home</a></li>
+        <li><a href="#products" onclick="smoothScroll(event)">Products</a></li>
+        <li><a href="#about" onclick="smoothScroll(event)">About Us</a></li>
+        <li><a href="#contact" onclick="smoothScroll(event)">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Premium Welding Electrodes</h1>
+        <p>Leading Quality Solutions for Professional Welding</p>
+        <button
+          class="cta-button"
+          onclick="smoothScroll({target: {getAttribute: () => '#products'}})"
+        >
+          Explore Products
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About ALQASIR</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Our Mission</h3>
+          <p>
+            To provide the highest quality welding electrodes that meet
+            international standards while ensuring reliability and performance
+            for welders worldwide.
+          </p>
+
+          <h3>Our Vision</h3>
+          <p>
+            To be the trusted choice for professional welding solutions,
+            recognized globally for excellence and innovation in welding
+            technology.
+          </p>
+
+          <h3>Company Background</h3>
+          <p>
+            ALQASIR, established as a premium welding electrode supplier,
+            partners with KISWEL to deliver superior-quality SK-260-C electrodes
+            manufactured in Malaysia. With ISO 9001 certification and compliance
+            with international standards (JIS D4313, AWS E6013), we ensure every
+            product meets the highest industry benchmarks.
+          </p>
+        </div>
+        <div class="about-text">
+          <h3>Why Choose ALQASIR?</h3>
+          <p>✓ Superior quality materials and precise manufacturing</p>
+          <p>✓ ISO 9001 certified production facility</p>
+          <p>✓ Compliant with international welding standards</p>
+          <p>✓ Consistent performance across all electrode types</p>
+          <p>✓ Reliable delivery and professional support</p>
+          <p>✓ Competitive pricing for bulk orders</p>
+          <p>✓ Suitable for all position welding applications</p>
+          <p>✓ Made in Malaysia with global quality assurance</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+      <h2 class="section-title">Our Products</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-icon">⚡</div>
+          <h3>SK-260-C 2.6mm</h3>
+          <div class="specs">
+            <strong>Length:</strong> 350mm<br />
+            <strong>Net Weight:</strong> 16kg / 4kg<br />
+            <strong>Diameter:</strong> 2.6mm
+          </div>
+          <p>
+            Ideal for thin materials and precision welding. Perfect for
+            automotive and light structural applications.
+          </p>
+          <div class="quality-badges">
+            <span class="badge">ISO 9001</span>
+            <span class="badge">JIS D4313</span>
+            <span class="badge">AWS E6013</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">⚡</div>
+          <h3>SK-260-C 3.2mm</h3>
+          <div class="specs">
+            <strong>Length:</strong> 350mm<br />
+            <strong>Net Weight:</strong> 16kg / 4kg<br />
+            <strong>Diameter:</strong> 3.2mm
+          </div>
+          <p>
+            Most versatile size for general-purpose welding. Excellent for sheet
+            metal and structural steel work.
+          </p>
+          <div class="quality-badges">
+            <span class="badge">ISO 9001</span>
+            <span class="badge">JIS D4313</span>
+            <span class="badge">AWS E6013</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">⚡</div>
+          <h3>SK-260-C 4.0mm</h3>
+          <div class="specs">
+            <strong>Length:</strong> 350mm<br />
+            <strong>Net Weight:</strong> 16kg / 4kg<br />
+            <strong>Diameter:</strong> 4.0mm
+          </div>
+          <p>
+            Heavy-duty electrode for thick materials. Ideal for industrial
+            applications and structural welding.
+          </p>
+          <div class="quality-badges">
+            <span class="badge">ISO 9001</span>
+            <span class="badge">JIS D4313</span>
+            <span class="badge">AWS E6013</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem">
+        <p style="color: var(--light-gray); font-size: 0.95rem">
+          ✓ All position welding • ✓ Keep dry • ✓ Superior quality • ✓ Made in
+          Malaysia
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p>📍 Address: Malaysia</p>
+          <p>📞 Phone: +60 (Your Contact Number)</p>
+          <p>📧 Email: info@alqasir.com</p>
+
+          <h3>Business Hours</h3>
+          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 9:00 AM - 2:00 PM</p>
+          <p>Sunday: Closed</p>
+
+          <h3>Quality Certifications</h3>
+          <p>✓ ISO 9001:2015</p>
+          <p>✓ JIS D4313</p>
+          <p>✓ AWS E6013</p>
+        </div>
+
+        <div>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 ALQASIR Welding Electrodes. All rights reserved. |
+        Especially made by KISWEL for ALQASIR | Made in Malaysia
+      </p>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Smooth Scrolling
+      function smoothScroll(event) {
+        const target = event.target.getAttribute("href");
+        if (target && target.startsWith("#")) {
+          event.preventDefault();
+          const element = document.querySelector(target);
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+      }
+
+      // Form Handling
+      const contactForm = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Get form values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Simple validation
+        if (!name || !email || !subject || !message) {
+          formMessage.textContent = "Please fill in all fields.";
+          formMessage.classList.remove("success");
+          formMessage.classList.add("error");
+          return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          formMessage.textContent = "Please enter a valid email address.";
+          formMessage.classList.remove("success");
+          formMessage.classList.add("error");
+          return;
+        }
+
+        // Success message
+        formMessage.textContent = `Thank you, ${name}! Your message has been received. We\'ll get back to you soon.`;
+        formMessage.classList.remove("error");
+        formMessage.classList.add("success");
+
+        // Reset form
+        contactForm.reset();
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.classList.remove("success");
+          formMessage.textContent = "";
+        }, 5000);
+      });
+
+      // Scroll to top on page load
+      window.addEventListener("load", () => {
+        window.scrollTo(0, 0);
+      });
+    </script>
+  </body>
+</html>
